@@ -1,0 +1,13 @@
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{opacity:0;transform:translate3d(0,14px,0);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+  .bar{animation:fade .9s var(--ease-out) .1s both}
+  .chap:first-child .hz{animation:rise 1.2s var(--ease-out) .55s both}
+  .floor{animation:fade 1.6s var(--ease-out) .4s both}
+  .sky .g0 path{stroke-dasharray:1;animation:draw 1.8s var(--ease-out) .4s both}
+  @keyframes legend-pulse{0%{opacity:0;transform:scale(.85)}55%{opacity:1;transform:scale(1.15)}100%{opacity:0;transform:scale(.85)}}
+  .hint span{animation:legend-pulse 2.2s var(--ease-in-out) 1.8s infinite backwards}
+}
+.sky .g0 path{stroke-dasharray:1}
+.sky .g0 path:nth-child(-n+2){animation:none;stroke-dashoffset:1}   /* hidden until the intro loop draws it */

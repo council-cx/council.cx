@@ -1,0 +1,26 @@
+:root{
+  /* Council design system: sky = surface-300, floor = parchment + sepia + hairline */
+  --sky:#dad2c0;   /* surface-300 */
+  --ink:#14110f; --ink-muted:#5a4f43;
+  --hairline:#b9ad97; --sepia:#3b2a1e; --parchment:#d9be98; --cobalt:#2b86d1;
+  --font-display:"Cormorant Garamond","Cormorant",Garamond,Georgia,serif;
+  --font-sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-in-out:cubic-bezier(.45,0,.55,1);
+  --gutter:max(20px,4vw,env(safe-area-inset-left),env(safe-area-inset-right));
+  --hz:56vh;            /* where the drawings end: the implicit horizon (no line is drawn) */
+  --hz-copy:56vh;       /* where the copy is anchored; the horizon sits higher on wide screens, the copy stays put */
+  --p:700px;            /* camera perspective */
+  --oy:149px;           /* p * cot(78deg): vanishing point sits exactly on --hz */
+  --s:1; --k:1;         /* spread / size factors, set from JS for wider screens */
+}
+@supports (height:1svh){:root{--hz:56svh;--hz-copy:56svh}}
+@media (min-width:720px){
+  :root{--hz:46vh}
+  @supports (height:1svh){:root{--hz:46svh}}
+}
+
+*{box-sizing:border-box}
+html{background:var(--sky);-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:400 16px/1.5 var(--font-sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}

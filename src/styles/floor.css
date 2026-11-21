@@ -1,0 +1,30 @@
+.floor{position:absolute;z-index:2;left:0;right:0;top:var(--hz);bottom:0;overflow:hidden;
+  background:
+    radial-gradient(ellipse 130% 85% at 50% 18%,transparent 55%,rgba(59,42,30,.18) 112%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520'%3E%3Cfilter id='s' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.007 .011' numOctaves='3' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .24 0 0 0 0 .13 0 0 0 .9 -.34'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .23 0 0 0 0 .16 0 0 0 0 .12 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom,#dad2c0 0,#dec9a2 30%,#d9be98 68%,#cbab7f 100%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 6%,#000 17%);
+          mask-image:linear-gradient(to bottom,transparent 0,rgba(0,0,0,.6) 6%,#000 17%)}
+.scene{position:absolute;inset:0;perspective:var(--p);perspective-origin:50% var(--oy)}
+.plane{position:absolute;left:50%;bottom:0;width:2640px;height:3600px;margin-left:-1320px;
+  transform-origin:50% 100%;transform:rotateX(78deg);transform-style:preserve-3d}
+.hl,.vl{position:absolute;background:rgba(59,42,30,.16)}
+.hl{left:0;right:0;height:2px}
+.vl{top:0;bottom:0;width:2px}
+.road{position:absolute;top:0;bottom:0;left:calc(50% - 180px*var(--k));width:calc(360px*var(--k));
+  border-left:2px solid rgba(59,42,30,.3);border-right:2px solid rgba(59,42,30,.3)}
+.ground{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.o,.f{position:absolute}
+.o{width:calc(220px*var(--k));height:calc(260px*var(--k));
+  left:calc(50% + var(--x)*var(--s)*1px - 110px*var(--k));
+  top:calc(3600px - var(--d)*1px - 260px*var(--k));
+  transform-origin:50% 100%;transform:rotateX(-78deg)}
+.f{width:calc(340px*var(--k));height:calc(340px*var(--k));
+  left:calc(50% - 170px*var(--k));top:calc(3600px - var(--d)*1px - 170px*var(--k))}
+.f.pl{width:calc(1000px*var(--k));height:760px;left:calc(50% - 500px*var(--k));top:calc(3600px - var(--d)*1px - 380px)}
+/* every drawing is a baked bitmap: the GPU only moves flat textures while you scroll */
+.o canvas,.f canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .8s var(--ease-out)}
+.o canvas.rd,.f canvas.rd{opacity:1}
+.o canvas.lt{position:absolute;left:0;top:0}
+.off{visibility:hidden}

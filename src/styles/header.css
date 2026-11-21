@@ -1,0 +1,9 @@
+.bar{position:absolute;z-index:6;top:0;left:0;right:0;padding:max(18px,env(safe-area-inset-top)) var(--gutter) 0}
+.bar svg{display:block;height:24px;width:auto}
+.meter{margin-top:22px;display:flex;align-items:center;gap:14px;font:500 11px/16px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-muted)}
+.meter .num{color:var(--ink);font-variant-numeric:tabular-nums}
+.meter .lbl{flex:none}
+.meter .rule{position:relative;flex:1;height:1px;background:var(--hairline)}
+.meter .rule i{position:absolute;left:0;top:0;height:1px;width:100%;background:var(--ink);transform-origin:0 50%;transform:scaleX(0)}
+.meter .rule b{position:absolute;top:-3px;left:0;width:7px;height:7px;margin-left:-3px;border-radius:50%;background:var(--sky);border:1px solid var(--ink)}
+.meter .txt{display:flex;gap:14px;align-items:center}

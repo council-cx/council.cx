@@ -1,0 +1,3 @@
+.sky{position:absolute;z-index:1;left:0;top:0;width:100%;height:var(--hz);overflow:visible}
+.sky path{fill:none;stroke:var(--sepia);stroke-linecap:round;stroke-linejoin:round}
+.sky g[data-k] path{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--d,0))}

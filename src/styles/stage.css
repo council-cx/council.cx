@@ -1,0 +1,4 @@
+#track{position:relative;height:620vh}
+@supports (height:1svh){#track{height:620svh}}
+.stage{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--sky)}
+@supports (height:1svh){.stage{height:100svh}}

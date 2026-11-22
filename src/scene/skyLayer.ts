@@ -37,6 +37,7 @@ function writeOnce(cache: Map<string, string>, key: string, value: string, write
 export function createSkyLayer(sky: SVGSVGElement): Layer {
   const [intro, ...chapterDrawings] = [...sky.querySelectorAll<SVGGElement>("g")];
   if (!intro) throw new Error("The sky has no drawings");
+  const chapterPaths = chapterDrawings.map((drawing) => [...drawing.querySelectorAll("path")]);
   const introPaths = [...intro.querySelectorAll("path")].slice(0, INTRO_PASSES);
   const introLoops = introPaths.length >= INTRO_PASSES && !prefersReducedMotion;
   const written = new Map<string, string>();
@@ -49,7 +50,10 @@ export function createSkyLayer(sky: SVGSVGElement): Layer {
       camera = current;
       chapterDrawings.forEach((drawing, index) => {
         const chapter = index + 1;
-        writeOnce(written, `d${index}`, ease(clamp((camera - (chapter - 0.75)) / 0.85)).toFixed(3), (value) => drawing.style.setProperty("--d", value));
+        const progress = ease(clamp((camera - (chapter - 0.75)) / 0.85));
+        writeOnce(written, `d${index}`, (1 - progress).toFixed(3), (value) => {
+          chapterPaths[index]!.forEach((path) => (path.style.strokeDashoffset = value));
+        });
         writeOnce(written, `o${index}`, (1 - ease(clamp((camera - (chapter + 0.35)) / 0.6))).toFixed(3), (value) => (drawing.style.opacity = value));
       });
       writeOnce(written, "intro", (1 - ease(clamp((camera - 0.25) / 0.6))).toFixed(3), (value) => (intro.style.opacity = value));
